@@ -1,0 +1,8 @@
+[Plugin]
+Loader=python3
+Module=nowplayingsidebar
+IAge=2
+Name=Now Playing Sidebar
+Description=Resizable album artwork and track details in the lower-left sidebar, yielding to Rhythmbox's Play Queue.
+Authors=Community plugin draft
+Copyright=Copyright 2026
