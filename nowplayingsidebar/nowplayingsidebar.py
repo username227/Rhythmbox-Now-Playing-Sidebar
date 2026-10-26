@@ -99,13 +99,16 @@ class NowPlayingSidebar(GObject.Object, Peas.Activatable):
         note('Unable to find a matching vertical sidebar paned')
         return None
 
-    def _label(self, css_name, max_lines=2):
+    def _label(self, css_name):
         label = Gtk.Label(xalign=0.5)
         label.set_justify(Gtk.Justification.CENTER)
         label.set_line_wrap(True)
         label.set_line_wrap_mode(2)  # Pango.WrapMode.WORD_CHAR
-        label.set_ellipsize(3)  # Pango.EllipsizeMode.END
-        label.set_lines(max_lines)
+        # Do not truncate metadata at two lines. The outer scrolled panel
+        # shows more text when resized and scrolls to expose the remainder.
+        label.set_ellipsize(0)  # Pango.EllipsizeMode.NONE
+        label.set_max_width_chars(24)
+        label.set_hexpand(True)
         label.get_style_context().add_class(css_name)
         return label
 
@@ -122,10 +125,10 @@ class NowPlayingSidebar(GObject.Object, Peas.Activatable):
         self.picture.set_halign(Gtk.Align.CENTER)
         self.picture.set_valign(Gtk.Align.CENTER)
         outer.pack_start(self.picture, True, True, 0)
-        self.title = self._label('title', 2)
+        self.title = self._label('title')
         self.title.set_markup('<b>Not Playing</b>')
-        self.artist = self._label('artist', 2)
-        self.album = self._label('album', 2)
+        self.artist = self._label('artist')
+        self.album = self._label('album')
         details = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=3)
         details.set_margin_top(5)
         for label in (self.title, self.artist, self.album):
@@ -135,13 +138,14 @@ class NowPlayingSidebar(GObject.Object, Peas.Activatable):
         scroll = Gtk.ScrolledWindow()
         scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
         scroll.set_shadow_type(Gtk.ShadowType.NONE)
+        scroll.set_propagate_natural_height(False)
         scroll.add(outer)
         self.panel = scroll
         self.panel.connect('size-allocate', self._on_panel_size)
         return scroll
 
     def do_activate(self):
-        note('Activating Now Playing Sidebar 1.0.0')
+        note('Activating Now Playing Sidebar 1.1.0')
         try:
             self.shell = self.object
             self.player = self.shell.props.shell_player
