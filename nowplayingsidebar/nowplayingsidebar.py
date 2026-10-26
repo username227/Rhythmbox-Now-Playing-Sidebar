@@ -123,8 +123,8 @@ class NowPlayingSidebar(GObject.Object, Peas.Activatable):
         outer.pack_start(heading, False, False, 4)
         self.picture = Gtk.Image.new_from_icon_name('rhythmbox-missing-artwork', Gtk.IconSize.DIALOG)
         self.picture.set_halign(Gtk.Align.CENTER)
-        self.picture.set_valign(Gtk.Align.CENTER)
-        outer.pack_start(self.picture, True, True, 0)
+        self.picture.set_valign(Gtk.Align.START)
+        outer.pack_start(self.picture, False, False, 0)
         self.title = self._label('title')
         self.title.set_markup('<b>Not Playing</b>')
         self.artist = self._label('artist')
@@ -145,7 +145,7 @@ class NowPlayingSidebar(GObject.Object, Peas.Activatable):
         return scroll
 
     def do_activate(self):
-        note('Activating Now Playing Sidebar 1.1.0')
+        note('Activating Now Playing Sidebar 1.2.0')
         try:
             self.shell = self.object
             self.player = self.shell.props.shell_player
