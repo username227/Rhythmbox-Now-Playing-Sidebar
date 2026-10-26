@@ -1,6 +1,8 @@
 # Rhythmbox-Now-Playing-Sidebar
 A plugin to add a "Now Playing" box to Rhythmbox music player
 
+<img width="1920" height="1080" alt="Screenshot from 2026-10-25 20-02-57" src="https://github.com/user-attachments/assets/dae46a2c-6d9e-431b-a689-f5fb96616900" />
+
 # Features
 - Adds a "Now Playing" field in the bottom half of the left sidebar.
 - This plugin is not compatible with the "Play Queue in Side Pane" option in the View menu. If that option is selected, the "Now Playing" sidebar will automatically hide.
