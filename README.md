@@ -10,9 +10,21 @@ A plugin to add a "Now Playing" box to Rhythmbox music player
 - Contains an adjustable, horizontal bar dividing the Now Playing sidebar from the Library sidebar.
 
 # Installation
-Install the albumshuffle folder into either `/usr/lib/rhythmbox/plugins` or `~/.local/share/rhythmbox/plugins`. <p>
-For the Flatpak version, install it into `~/.var/app/org.gnome.Rhythmbox3/data/rhythmbox/plugins`. <p>
-In Rhythmbox, go to Preferences > Plugins and click "Continuous Album Shuffle" to activate.
+For a **user-level installation**, copy the plugin folder into:
+
+`~/.local/share/rhythmbox/plugins/`
+
+For a **system-wide installation**, the location depends on your distribution:
+
+- **Arch Linux:** `/usr/lib/rhythmbox/plugins/`
+- **Debian/Ubuntu/Mint (x86_64):** `/usr/lib/x86_64-linux-gnu/rhythmbox/plugins/`
+- **Debian/Ubuntu/Mint (ARM64):** `/usr/lib/aarch64-linux-gnu/rhythmbox/plugins/`
+
+For **Flatpak**, use:
+
+`~/.var/app/org.gnome.Rhythmbox3/data/rhythmbox/plugins/`
+
+Restart Rhythmbox, open **Preferences → Plugins**, and enable the plugin.
 
 
 # Full Disclosure
